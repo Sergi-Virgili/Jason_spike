@@ -11,7 +11,7 @@ const endpointNames = fileNames.map((fileName) => {
 
 // crear una instancia de express
 const app = express();
-
+app.use(express.json());
 // crear un puerto
 
 const port = 5555;
