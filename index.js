@@ -31,17 +31,17 @@ resources = await loadResources();
 
 //  CREATE ENDPOINTS
 
-for (const resource of Object.keys(resources)) {
-  console.log(resources[resource]);
+for (const endPoint of Object.keys(resources)) {
+  console.log(resources[endPoint]);
 
   // GetAll endpoints
-  app.get(`/${resource}`, async (req, res) => {
-    res.json(resources[resource]);
+  app.get(`/${endPoint}`, async (req, res) => {
+    res.json(resources[endPoint]);
   });
 
   // GetById endpoints
-  app.get(`/${resource}/:id`, async (req, res) => {
-    const item = resources[resource].find(
+  app.get(`/${endPoint}/:id`, async (req, res) => {
+    const item = resources[endPoint].find(
       (item) => item.id === Number(req.params.id)
     );
     if (!item) {
@@ -51,26 +51,32 @@ for (const resource of Object.keys(resources)) {
     res.json(item);
   });
 
-  app.delete(`/${resource}/:id`, async (req, res) => {
-    const item = resources[resource].find(
+  app.delete(`/${endPoint}/:id`, async (req, res) => {
+    const item = resources[endPoint].find(
       (item) => item.id === Number(req.params.id)
     );
     if (!item) {
       res.status(404).json({ code: 404, message: "Item not found" });
       return;
     }
-    resources[resource] = resources[resource].filter(
+    resources[endPoint] = resources[endPoint].filter(
       (item) => item.id !== Number(req.params.id)
     );
     res.json(item);
   });
 
-  app.post(`/${resource}`, async (req, res) => {
+  app.post(`/${endPoint}`, async (req, res) => {
     const item = req.body;
     // TODO validar item
-    // TODO encontrar el id mas alto y sumarle 1
-    item.id = resources[resource].length + 1;
-    resources[resource].push(item);
+
+    // Find max id and add 1 to create a new id
+    let newId = 0;
+    for (const dataItem of resources[endPoint]) {
+      if (Number(dataItem.id) >= newId) newId = Number(dataItem.id + 1);
+    }
+
+    item["id"] = newId;
+    resources[endPoint].push(item);
     res.json(item);
   });
 }
