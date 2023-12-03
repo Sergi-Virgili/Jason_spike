@@ -1,0 +1,32 @@
+[
+    {
+      "id": 1,
+      "nombre": "BotAnalitico",
+      "tipo": "Análisis de Datos",
+      "descripcion": "Este bot procesa y analiza grandes cantidades de datos."
+    },
+    {
+      "id": 2,
+      "nombre": "BotChat",
+      "tipo": "Asistente Virtual",
+      "descripcion": "Un bot de chat interactivo que responde preguntas frecuentes."
+    },
+    {
+      "id": 3,
+      "nombre": "BotLimpieza",
+      "tipo": "Automatización de Tareas",
+      "descripcion": "Automatiza tareas repetitivas en sistemas y bases de datos."
+    },
+    {
+      "id": 4,
+      "nombre": "BotMusical",
+      "tipo": "Entretenimiento",
+      "descripcion": "Crea y reproduce listas de reproducción personalizadas."
+    },
+    {
+      "id": 5,
+      "nombre": "BotClima",
+      "tipo": "Información Meteorológica",
+      "descripcion": "Proporciona actualizaciones del clima y pronósticos."
+    }
+  ]
